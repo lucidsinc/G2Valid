@@ -1,13 +1,13 @@
 <?php
 /** 
-* Name 			: 	G2FormValidator
+* Name 			: 	G2Valid
 * Release 		:	Alpha
 * @author 		: 	Gayan Silva A.K.A G2 | Dsignvilla
 * URL 			: 	http://dsignvilla.com
 * Description	:	Simple Validation Class For Forms And Stuff
 * Requirments	:	PHP 5.0 or Upwards
 */
-class G2FormValidator
+class G2Valid
 {
 	// Holds The POST Information
 	private $_post_details;
@@ -203,7 +203,7 @@ class G2FormValidator
 	/**
 	*	Checks for empty input
 	*/
-	function is_empty($custError = NULL)
+	function isEmpty($custError = NULL)
 	{
 		if(empty(trim($this->_pointer)))
 		{
@@ -288,7 +288,7 @@ class G2FormValidator
 
 	/**
 	*	Check for Maximum Length of a string
-	*	@param int $min the minimum string size
+	*	@param int $min the maximum string size
 	*/
 	function maxLength($max,$custError = NULL)
 	{
