@@ -1,8 +1,9 @@
 G2Valid
 =======
 
-An Easy PHP Form Validation Class to make your life much easier when it comes to form validation.
-**@author**  Gayan Silva  busygayan@gmail.com
+An Easy PHP Form Validation Class to make your life much easier when it comes to form validation.<br/>
+**@author**  Gayan Silva  busygayan@gmail.com<br/>
+PHP 5.0 or above is required
 
 **License:**
 GPL v2 http://www.gnu.org/licenses/gpl-2.0.txt
@@ -150,4 +151,68 @@ $validator->field('db_id')->setValue($db->getId());
 // Without using multiple lines, you can do it in a single line
 $validator->addField('db_id')->setValue($db->getId()->isEmpty('No Db record')->isInt('Invalid id');
 ```
-> Note that you can chance values of any field by using **setValue();** method
+> Note that you can change values of any field by using **setValue();** method
+
+So a complete demo
+=======
+Okay, Let me give show you a complete demo
+```php
+// Including The G2Valid Class
+require('class.php');
+
+/**
+* For the time being,
+* Just think that this is a registration form of a web site
+*/
+$_POST['name']      =   'Gayan-1';
+$_POST['address']   =   '222/1 Some Lane Sri Lanka';
+$_POST['password']  =   'mypass';
+$_POST['passwd2']   =   'mypassz';
+$_POST['email']     =   'busygayan@gmail.com';
+$_POST['age']       =   '21';
+$_POST['web']       =   'http://dsignvilla.com';
+
+/**
+* Create a new instance of G2Valid
+* Then parse the $_POST for validation
+*/
+$validator = new G2Valid($_POST);
+
+// Validate Name
+$validator->field('name')->isEmpty('name is required')->alpha('Name can have only letters');
+// Validate Address
+$validator->field('address')->isEmpty('Address is required')->alphanumeric('enter a valid address');
+// Validate Password
+$validator->field('password')->minLength(5,'a password should contain atleast 5 chars');
+// Password Confirmation
+$validator->field('password')->isSame('passwd2','Passwords Did Not Match');
+// Validate Email with custom error message
+$validator->field('email')->validEmail('Valid Email Required');
+// Validate Age
+$validator->field('age')->isInt('Type age in numeric form');
+// Validate Web
+$validator->field('web')->validURL('Enter a correct web site address / URL');
+
+/**
+* Now Lets check for validation
+*/
+if($validator->validate())
+{
+    // Do something, register may be
+    $user->register($_POST);
+}
+else
+{
+    /**
+    * Their are too many ways to display the error messages, but i'm gonna show one by one :P
+    */
+    
+    echo '<br/>' .  $validator->field('name')->getError();
+    echo '<br/>' .  $validator->field('address')->getError();
+    echo '<br/>' .  $validator->field('password')->getError();
+    echo '<br/>' .  $validator->field('email')->getError();
+    echo '<br/>' .  $validator->field('age')->getError();
+    echo '<br/>' .  $validator->field('web')->getError();
+}
+```
+> Thank you.
