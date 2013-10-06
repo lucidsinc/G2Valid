@@ -67,7 +67,7 @@ else
 --------------
 
 ##Validation Options
-    isEmpty($param)        - Checks for empty input (@param | String : custom error message)
+    isEmpty($param)         - Checks for empty input (@param | String : custom error message)
     validEmail($param)      - Checks for valid email (@param | String : custom error message)
     validURL($param)        - Checks for valid URL according to http://www.faqs.org/rfcs/rfc2396 
                               (@param | String : custom error message)
