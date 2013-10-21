@@ -4,8 +4,8 @@
 * Release 		:	Alpha
 * @author 		: 	Gayan Silva A.K.A G2 | Dsignvilla
 * URL 			: 	http://dsignvilla.com
-* Description	:	Simple Validation Class For Forms And Stuff
-* Requirments	:	PHP 5.0 or Upwards
+* Description		:	Simple Validation Class For Forms And Stuff
+* Requirments		:	PHP 5.0 or Upwards [ Ctype Enabled Host ]
 */
 class G2Valid
 {
@@ -27,7 +27,7 @@ class G2Valid
 	const E_ISSAME			=	"Fields Didn't Match";
 	const E_VALID_IP		=	'Invalid Ip Address';
 	const E_ALPHA			=	'Letters are only accepted';
-	const E_ALPHANUIMERIC	=	'Numbers and letters are only accepted';
+	const E_ALPHANUIMERIC		=	'Numbers and letters are only accepted';
 	const E_INT 			=	'Invalid Whole Number';
 	const E_FLOAT 			=	'Invalid Float Number';
 	const E_MINLENGTH		=	'Did Not Meet Minimum Length';
@@ -126,7 +126,7 @@ class G2Valid
 	*/
 	function validate()
 	{
-		if (!empty($this->_errors))
+		if (count($this->_errors) < 1)
 		{
 		    return true;
 		}
@@ -170,11 +170,11 @@ class G2Valid
 	*/
 	function getErrorAsString($report = NULL)
 	{
-		if(isset($this->_errors[$this->_pointer_key]))
+		if(isset($this->_errors))
 		{
 			$result = '';
-			foreach ($this->_errors[$this->_pointer_key] as $key => $value) {
-				$result .= (isset($report) && $report == true) ? $this->_pointer_key.' | '.$value."</br>" : $value."</br>";
+			foreach ($this->_errors as $key => $value) {
+				$result .= (isset($report) && $report == true) ? $key.' | '.$value[0]."</br>" : $value[0]."</br>";
 			}
 			return $result;
 		}
