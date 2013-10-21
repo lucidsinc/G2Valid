@@ -46,7 +46,7 @@ $validator->field('web')->validURL();
 * Lets check for any errors in the form
 */
 
-if($validator-validate())
+if($validator->validate())
 {
     // Do Anything with validated values 
     echo 'Everything Cool, I will do something';
@@ -55,8 +55,8 @@ if($validator-validate())
 else
 {
     // If Any Errors are occoured, they can be displayed here
-    echo $validator-field('email')->getError();
-    echo $validator-field('web')->getError();
+    echo $validator->field('email')->getError();
+    echo $validator->field('web')->getError();
 }
 ```
 
@@ -149,7 +149,7 @@ $validator->addField('db_id');
 $validator->field('db_id')->setValue($db->getId());
 
 // Without using multiple lines, you can do it in a single line
-$validator->addField('db_id')->setValue($db->getId()->isEmpty('No Db record')->isInt('Invalid id');
+$validator->addField('db_id')->setValue($db->getId())->isEmpty('No Db record')->isInt('Invalid id');
 ```
 > Note that you can change values of any field by using **setValue();** method
 
