@@ -130,7 +130,7 @@ This might be good for debugging or if you plan to take validatoin to the next l
     
     // To simply inspect, you can use
     print_r($instance);
-<br/>    
+    
 **5- Get all Errors of the form or instance** (@return string)<br/>
 This is very usefull if you want to report all the errors of the form at once as a string,It's always easy right ?. if you haven't set custom error messages, pass the additional parameter true to turn on detailed reporting like in example below
     
