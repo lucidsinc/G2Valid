@@ -284,6 +284,8 @@ class G2Valid
 		{
 			$this->_report_error($this->_pointer_key,self::E_MINLENGTH,$custError);
 		}
+
+		return $this;
 	}
 
 	/**
@@ -296,6 +298,8 @@ class G2Valid
 		{
 			$this->_report_error($this->_pointer_key,self::E_MAXLENGTH,$custError);
 		}
+
+		return $this;
 	}
 	
 	/////////////////////////////////////////////////
